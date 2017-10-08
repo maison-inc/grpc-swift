@@ -1,0 +1,5 @@
+module BoringSSL {
+    umbrella "/Users/ishkawa/dev/src/github.com/tabely/tabely-ios/grpc-swift/Sources/BoringSSL/include"
+    link "BoringSSL"
+    export *
+}

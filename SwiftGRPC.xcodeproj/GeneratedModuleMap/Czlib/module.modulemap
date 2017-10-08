@@ -1,0 +1,5 @@
+module Czlib {
+    umbrella "/Users/ishkawa/dev/src/github.com/tabely/tabely-ios/grpc-swift/Packages/zlib-0.4.0/Sources/Czlib/include"
+    link "Czlib"
+    export *
+}
