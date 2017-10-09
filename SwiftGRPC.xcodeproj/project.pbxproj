@@ -3175,6 +3175,20 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 9999;
+				TargetAttributes = {
+					OBJ_816 = {
+						LastSwiftMigration = 0900;
+					};
+					OBJ_838 = {
+						LastSwiftMigration = 0900;
+					};
+					OBJ_861 = {
+						LastSwiftMigration = 0900;
+					};
+					OBJ_863 = {
+						LastSwiftMigration = 0900;
+					};
+				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "SwiftGRPC" */;
 			compatibilityVersion = "Xcode 3.2";
