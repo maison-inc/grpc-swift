@@ -3913,7 +3913,7 @@
 				MODULEMAP_FILE = SwiftGRPC.xcodeproj/GeneratedModuleMap/BoringSSL/module.modulemap;
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = BoringSSL;
+				PRODUCT_BUNDLE_IDENTIFIER = io.grpc.BoringSSL;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				TARGET_NAME = BoringSSL;
@@ -3940,7 +3940,7 @@
 				MODULEMAP_FILE = SwiftGRPC.xcodeproj/GeneratedModuleMap/BoringSSL/module.modulemap;
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = BoringSSL;
+				PRODUCT_BUNDLE_IDENTIFIER = io.grpc.BoringSSL;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				TARGET_NAME = BoringSSL;
@@ -4071,7 +4071,7 @@
 				MODULEMAP_FILE = SwiftGRPC.xcodeproj/GeneratedModuleMap/Czlib/module.modulemap;
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = Czlib;
+				PRODUCT_BUNDLE_IDENTIFIER = io.grpc.Czlib;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				TARGET_NAME = Czlib;
@@ -4096,7 +4096,7 @@
 				MODULEMAP_FILE = SwiftGRPC.xcodeproj/GeneratedModuleMap/Czlib/module.modulemap;
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = Czlib;
+				PRODUCT_BUNDLE_IDENTIFIER = io.grpc.Czlib;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				TARGET_NAME = Czlib;
@@ -4122,7 +4122,7 @@
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_TEMP_DIR)/SymlinkLibs/";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = gRPC;
+				PRODUCT_BUNDLE_IDENTIFIER = io.grpc.gRPC;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				TARGET_NAME = gRPC;
@@ -4148,7 +4148,7 @@
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_TEMP_DIR)/SymlinkLibs/";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = gRPC;
+				PRODUCT_BUNDLE_IDENTIFIER = io.grpc.gRPC;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				TARGET_NAME = gRPC;
@@ -4176,7 +4176,7 @@
 				MODULEMAP_FILE = Sources/CgRPC/include/module.modulemap;
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = CgRPC;
+				PRODUCT_BUNDLE_IDENTIFIER = io.grpc.CgRPC;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				TARGET_NAME = CgRPC;
@@ -4204,7 +4204,7 @@
 				MODULEMAP_FILE = Sources/CgRPC/include/module.modulemap;
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = CgRPC;
+				PRODUCT_BUNDLE_IDENTIFIER = io.grpc.CgRPC;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				TARGET_NAME = CgRPC;
