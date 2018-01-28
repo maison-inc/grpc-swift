@@ -1,4 +1,4 @@
-/// {{ method.name }} (Client Streaming)
+/// {{ method|methodDescriptorName }} (Client Streaming)
 {{ access }} class {{ .|call:file,service,method }} {
   private var call : Call
 
@@ -57,5 +57,10 @@
       } catch (let error) {
         throw error
       }
+  }
+
+  /// Cancel the call.
+  {{ access }} func cancel() {
+    call.cancel()
   }
 }

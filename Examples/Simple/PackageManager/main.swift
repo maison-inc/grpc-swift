@@ -1,5 +1,5 @@
 /*
- * Copyright 2016, gRPC Authors All rights reserved.
+ * Copyright 2017, gRPC Authors All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,41 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import gRPC
 import Foundation
+import Dispatch
+import gRPC
+import Commander
 
 let address = "localhost:8001"
 let host = "foo.test.google.fr"
 
-func usage() {
-  print("Usage: Simple <client|server>\n")
-  exit(0)
-}
-
-func main() throws {
-  gRPC.initialize()
-  print("gRPC version", gRPC.version())
-
-  print("\(CommandLine.arguments)")
-  if CommandLine.arguments.count != 2 {
-    usage()
-  }
-
-  let command = CommandLine.arguments[1]
-  switch command {
-  case "client": try client()
-  case "server": try server()
-  default:
-    usage()
-  }
-}
-
 func client() throws {
   let message = "hello, server!".data(using: .utf8)
-  let c = gRPC.Channel(address:address)
+  let c = gRPC.Channel(address:address, secure:false)
   let steps = 3
   for i in 0..<steps {
-    let latch = CountDownLatch(1)
+    let sem = DispatchSemaphore(value: 0)
 
     let method = (i < steps-1) ? "/hello" : "/quit"
     print("calling " + method)
@@ -56,7 +35,6 @@ func client() throws {
     let metadata = Metadata([["x": "xylophone"],
                              ["y": "yu"],
                              ["z": "zither"]])
-
 
     try! call.start(.unary, metadata:metadata, message:message) {
       (response) in
@@ -75,9 +53,9 @@ func client() throws {
       for i in 0..<trailingMetadata.count() {
         print("TRAILING METADATA ->", trailingMetadata.key(i), ":", trailingMetadata.value(i))
       }
-      latch.signal()
+      sem.signal()
     }
-    latch.wait()
+    _ = sem.wait(timeout: DispatchTime.distantFuture)
   }
   print("Done")
 }
@@ -86,7 +64,7 @@ func server() throws {
   let server = gRPC.Server(address:address)
   var requestCount = 0
 
-  let latch = CountDownLatch(1)
+  let sem = DispatchSemaphore(value: 0)
 
   server.run() {(requestHandler) in
 
@@ -114,7 +92,7 @@ func server() throws {
 
       if requestHandler.method == "/quit" {
         print("quitting")
-        latch.signal()
+        sem.signal()
       }
 
       let replyMessage = "hello, client!"
@@ -136,9 +114,23 @@ func server() throws {
     print("Server Stopped")
   }
 
-  latch.wait()
+  _ = sem.wait(timeout: DispatchTime.distantFuture)
 }
 
-try main()
+Group {
+
+  $0.command("server") {
+    gRPC.initialize()
+    print("gRPC version", gRPC.version())
+    try server()
+  }
+
+  $0.command("client") {
+    gRPC.initialize()
+    print("gRPC version", gRPC.version())
+    try client()
+  }
+
+  }.run()
 
 

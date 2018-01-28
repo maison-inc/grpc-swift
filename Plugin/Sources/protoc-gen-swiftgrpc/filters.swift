@@ -15,9 +15,11 @@
  */
 import Foundation
 import SwiftProtobuf
-import PluginLibrary
+import SwiftProtobufPluginLibrary
 import Stencil
 import PathKit
+
+let namer = SwiftProtobufNamer()
 
 // internal helpers
 extension String {
@@ -35,141 +37,159 @@ extension String {
   }
 }
 
+// error-generating helpers
+
+func invalidArgumentCount(filter:String, expected:Int) -> TemplateSyntaxError {
+  return TemplateSyntaxError("\(filter): expects \(expected) arguments")
+}
+
+func invalidArgument(filter:String, value:Any?) -> TemplateSyntaxError {
+  return TemplateSyntaxError("\(filter): invalid argument \(String(describing:value))")
+}
+
+func invalidArgumentType(filter: String, required: String, received: Any?) -> TemplateSyntaxError {
+  return TemplateSyntaxError("\(filter): invalid argument type: required \(required) received \(String(describing:received))")
+}
+
 // functions for use in templates
 
 // Transform .some.package_name.FooBarRequest -> Some_PackageName_FooBarRequest
-func protoMessageName(_ name :String?) -> String {
-  guard let name = name else {
-    return ""
-  }
-
-  var parts : [String] = []
-  for dotComponent in name.components(separatedBy:".") {
-    var part = ""
-    if dotComponent == "" {
-      continue
-    }
-    for underscoreComponent in dotComponent.components(separatedBy:"_") {
-      part.append(underscoreComponent.uppercasedFirst)
-    }
-    parts.append(part)
-  }
-
-  return parts.joined(separator:"_")
+func protoMessageName(_ descriptor :SwiftProtobufPluginLibrary.Descriptor) -> String {
+  return namer.fullName(message:descriptor)
 }
 
-func pathName(_ arguments: [Any?]) throws -> String {
+func pathName(filter:String, arguments: [Any?]) throws -> String {
   if arguments.count != 3 {
-    throw TemplateSyntaxError("path expects 3 arguments")
+    throw invalidArgumentCount(filter:"path", expected:3)
   }
-  guard let protoFile = arguments[0] as? FileDescriptor
+  guard let protoFile = arguments[0] as? SwiftProtobufPluginLibrary.FileDescriptor
     else {
-      throw TemplateSyntaxError("tag must be called with a " +
-        "FileDescriptor" +
-        " argument, received \(String(describing:arguments[0]))")
+      throw invalidArgumentType(filter:"path", required:"FileDescriptor", received:arguments[0])
   }
-  guard let service = arguments[1] as? ServiceDescriptor
+  guard let service = arguments[1] as? SwiftProtobufPluginLibrary.ServiceDescriptor
     else {
-      throw TemplateSyntaxError("tag must be called with a " +
-        "ServiceDescriptor" +
-        " argument, received \(String(describing:arguments[1]))")
+      throw invalidArgumentType(filter:"path", required:"ServiceDescriptor", received:arguments[1])
   }
-  guard let method = arguments[2] as? MethodDescriptor
+  guard let method = arguments[2] as? SwiftProtobufPluginLibrary.MethodDescriptor
     else {
-      throw TemplateSyntaxError("tag must be called with a " +
-        "MethodDescriptor" +
-        " argument, received \(String(describing:arguments[2]))")
+      throw invalidArgumentType(filter:"path", required:"MethodDescriptor", received:arguments[2])
   }
   return "/" + protoFile.package + "." + service.name + "/" + method.name
 }
 
-func packageServiceMethodName(_ arguments: [Any?]) throws -> String {
+func packageServiceMethodName(filter:String, arguments: [Any?]) throws -> String {
   if arguments.count != 3 {
-    throw TemplateSyntaxError("tag expects 3 arguments")
+    throw invalidArgumentCount(filter:"packageServiceMethodName", expected:3)
   }
-  guard let protoFile = arguments[0] as? FileDescriptor
+  guard let protoFile = arguments[0] as? SwiftProtobufPluginLibrary.FileDescriptor
     else {
-      throw TemplateSyntaxError("tag must be called with a " +
-        "FileDescriptor" +
-        " argument, received \(String(describing:arguments[0]))")
+      throw invalidArgumentType(filter:filter, required:"FileDescriptor", received:arguments[0])
   }
-  guard let service = arguments[1] as? ServiceDescriptor
+  guard let service = arguments[1] as? SwiftProtobufPluginLibrary.ServiceDescriptor
     else {
-      throw TemplateSyntaxError("tag must be called with a " +
-        "ServiceDescriptor" +
-        " argument, received \(String(describing:arguments[1]))")
+      throw invalidArgumentType(filter:filter, required:"ServiceDescriptor", received:arguments[0])
   }
-  guard let method = arguments[2] as? MethodDescriptor
+  guard let method = arguments[2] as? SwiftProtobufPluginLibrary.MethodDescriptor
     else {
-      throw TemplateSyntaxError("tag must be called with a " +
-        "MethodDescriptor" +
-        " argument, received \(String(describing:arguments[2]))")
+      throw invalidArgumentType(filter:filter, required:"MethodDescriptor", received:arguments[0])
   }
   return protoFile.package.capitalized.undotted + "_" + service.name + method.name
 }
 
-func packageServiceName(_ arguments: [Any?]) throws -> String {
+func packageServiceName(filter:String, arguments: [Any?]) throws -> String {
   if arguments.count != 2 {
-    throw TemplateSyntaxError("tag expects 2 arguments")
+    throw invalidArgumentCount(filter:"packageServiceName", expected:2)
   }
-  guard let protoFile = arguments[0] as? FileDescriptor
+  guard let protoFile = arguments[0] as? SwiftProtobufPluginLibrary.FileDescriptor
     else {
-      throw TemplateSyntaxError("tag must be called with a " +
-        "FileDescriptor" +
-        " argument, received \(String(describing:arguments[0]))")
+      throw invalidArgumentType(filter:filter, required:"FileDescriptor", received:arguments[0])
   }
-  guard let service = arguments[1] as? ServiceDescriptor
+  guard let service = arguments[1] as? SwiftProtobufPluginLibrary.ServiceDescriptor
     else {
-      throw TemplateSyntaxError("tag must be called with a " +
-        "ServiceDescriptor" +
-        " argument, received \(String(describing:arguments[1]))")
+      throw invalidArgumentType(filter:filter, required:"ServiceDescriptor", received:arguments[0])
   }
   return protoFile.package.capitalized.undotted + "_" + service.name
 }
 
 class GRPCFilterExtension : Extension {
-	override init() {
-		super.init()
-	    // initialize template engine and add custom filters
-	    let ext = self
-	    ext.registerFilter("call") { (value: Any?, arguments: [Any?]) in
-	      return try packageServiceMethodName(arguments) + "Call"
-	    }
-	    ext.registerFilter("session") { (value: Any?, arguments: [Any?]) in
-	      return try packageServiceMethodName(arguments) + "Session"
-	    }
-	    ext.registerFilter("path") { (value: Any?, arguments: [Any?]) in
-	      return try pathName(arguments)
-	    }
-	    ext.registerFilter("provider") { (value: Any?, arguments: [Any?]) in
-	      return try packageServiceName(arguments) + "Provider"
-	    }
-	    ext.registerFilter("clienterror") { (value: Any?, arguments: [Any?]) in
-	      return try packageServiceName(arguments) + "ClientError"
-	    }
-	    ext.registerFilter("serviceclass") { (value: Any?, arguments: [Any?]) in
-	      return try packageServiceName(arguments) + "Service"
-	    }
-	    ext.registerFilter("servererror") { (value: Any?, arguments: [Any?]) in
-	      return try packageServiceName(arguments) + "ServerError"
-	    }
-	    ext.registerFilter("server") { (value: Any?, arguments: [Any?]) in
-	      return try packageServiceName(arguments) + "Server"
-	    }
-	    ext.registerFilter("service") { (value: Any?, arguments: [Any?]) in
-	      return try packageServiceName(arguments)
-	    }
-	    ext.registerFilter("input") { (value: Any?) in
-	      if let value = value as? MethodDescriptor {
-	        return protoMessageName(value.inputType)
-	      }
-	      throw TemplateSyntaxError("message: invalid argument \(String(describing:value))")
-	    }
-	    ext.registerFilter("output") { (value: Any?) in
-	      if let value = value as? MethodDescriptor {
-	        return protoMessageName(value.outputType)
-	      }
-	      throw TemplateSyntaxError("message: invalid argument \(String(describing:value))")
-	    }
-	}
+  override init() {
+    super.init()
+    // initialize template engine and add custom filters
+    let ext = self
+    ext.registerFilter("call") { (value: Any?, arguments: [Any?]) in
+      return try packageServiceMethodName(filter:"call", arguments:arguments) + "Call"
+    }
+    ext.registerFilter("session") { (value: Any?, arguments: [Any?]) in
+      return try packageServiceMethodName(filter:"session", arguments:arguments) + "Session"
+    }
+    ext.registerFilter("path") { (value: Any?, arguments: [Any?]) in
+      return try pathName(filter:"path", arguments:arguments)
+    }
+    ext.registerFilter("provider") { (value: Any?, arguments: [Any?]) in
+      return try packageServiceName(filter:"provider", arguments:arguments) + "Provider"
+    }
+    ext.registerFilter("clienterror") { (value: Any?, arguments: [Any?]) in
+      return try packageServiceName(filter:"clienterror", arguments:arguments) + "ClientError"
+    }
+    ext.registerFilter("serviceclass") { (value: Any?, arguments: [Any?]) in
+      return try packageServiceName(filter:"serviceclass", arguments:arguments) + "Service"
+    }
+    ext.registerFilter("servererror") { (value: Any?, arguments: [Any?]) in
+      return try packageServiceName(filter:"servererror", arguments:arguments) + "ServerError"
+    }
+    ext.registerFilter("server") { (value: Any?, arguments: [Any?]) in
+      return try packageServiceName(filter:"server", arguments:arguments) + "Server"
+    }
+    ext.registerFilter("service") { (value: Any?, arguments: [Any?]) in
+      return try packageServiceName(filter:"server", arguments:arguments)
+    }
+    ext.registerFilter("input") { (value: Any?) in
+      if let value = value as? SwiftProtobufPluginLibrary.MethodDescriptor {
+        return protoMessageName(value.inputType)
+      }
+      throw invalidArgumentType(filter:"input", required:"MethodDescriptor", received:value)
+    }
+    ext.registerFilter("output") { (value: Any?) in
+      if let value = value as? SwiftProtobufPluginLibrary.MethodDescriptor {
+        return protoMessageName(value.outputType)
+      }
+      throw invalidArgumentType(filter:"output", required:"MethodDescriptor", received:value)
+    }
+    ext.registerFilter("fileDescriptorName") { (value: Any?) in
+      if let value = value as? SwiftProtobufPluginLibrary.FileDescriptor {
+        return value.name
+      }
+      throw invalidArgumentType(filter:"fileDescriptorName", required:"FileDescriptor", received:value)
+    }
+    ext.registerFilter("methodDescriptorName") { (value: Any?) in
+      if let value = value as? SwiftProtobufPluginLibrary.MethodDescriptor {
+        return value.name
+      }
+      throw invalidArgumentType(filter:"methodDescriptorName", required:"MethodDescriptor", received:value)
+    }
+    ext.registerFilter("methodIsUnary") { (value: Any?) in
+      if let value = value as? SwiftProtobufPluginLibrary.MethodDescriptor {
+        return !value.proto.clientStreaming && !value.proto.serverStreaming
+      }
+      throw invalidArgumentType(filter:"methodIsUnary", required:"MethodDescriptor", received:value)
+    }
+    ext.registerFilter("methodIsServerStreaming") { (value: Any?) in
+      if let value = value as? SwiftProtobufPluginLibrary.MethodDescriptor {
+        return !value.proto.clientStreaming && value.proto.serverStreaming
+      }
+      throw invalidArgumentType(filter:"methodIsServerStreaming", required:"MethodDescriptor", received:value)
+    }
+    ext.registerFilter("methodIsClientStreaming") { (value: Any?) in
+      if let value = value as? SwiftProtobufPluginLibrary.MethodDescriptor {
+        return value.proto.clientStreaming && !value.proto.serverStreaming
+      }
+      throw invalidArgumentType(filter:"methodIsClientStreaming", required:"MethodDescriptor", received:value)
+    }
+    ext.registerFilter("methodIsBidiStreaming") { (value: Any?) in
+      if let value = value as? SwiftProtobufPluginLibrary.MethodDescriptor {
+        return value.proto.clientStreaming && value.proto.serverStreaming
+      }
+      throw invalidArgumentType(filter:"methodIsBidiStreaming", required:"MethodDescriptor", received:value)
+    }
+  }
 }

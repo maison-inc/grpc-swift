@@ -1,4 +1,4 @@
-/// {{ method.name }} (Bidirectional Streaming)
+/// {{ method|methodDescriptorName }} (Bidirectional Streaming)
 {{ access }} class {{ .|call:file,service,method }} {
   private var call : Call
 
@@ -70,5 +70,10 @@
     try call.close() {
       completion()
     }
+  }
+
+  /// Cancel the call.
+  {{ access }} func cancel() {
+    call.cancel()
   }
 }

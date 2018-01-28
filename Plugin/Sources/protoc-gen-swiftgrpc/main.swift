@@ -15,7 +15,7 @@
  */
 import Foundation
 import SwiftProtobuf
-import PluginLibrary
+import SwiftProtobufPluginLibrary
 import Stencil
 import PathKit
 
@@ -43,6 +43,76 @@ func stripMarkers(_ code:String) -> String {
   return outputLines.joined(separator:"\n")
 }
 
+// from apple/swift-protobuf/Sources/protoc-gen-swift/StringUtils.swift
+func splitPath(pathname: String) -> (dir:String, base:String, suffix:String) {
+  var dir = ""
+  var base = ""
+  var suffix = ""
+  #if swift(>=3.2)
+    let pathnameChars = pathname
+  #else
+    let pathnameChars = pathname.characters
+  #endif
+  for c in pathnameChars {
+    if c == "/" {
+      dir += base + suffix + String(c)
+      base = ""
+      suffix = ""
+    } else if c == "." {
+      base += suffix
+      suffix = String(c)
+    } else {
+      suffix += String(c)
+    }
+  }
+  #if swift(>=3.2)
+    let validSuffix = suffix.isEmpty || suffix.first == "."
+  #else
+    let validSuffix = suffix.isEmpty || suffix.characters.first == "."
+  #endif
+  if !validSuffix {
+    base += suffix
+    suffix = ""
+  }
+  return (dir: dir, base: base, suffix: suffix)
+}
+
+enum OutputNaming : String {
+  case FullPath
+  case PathToUnderscores
+  case DropPath
+}
+
+var outputNamingOption : OutputNaming = .FullPath // temporarily hard-coded
+
+func outputFileName(component: String, fileDescriptor: FileDescriptor) -> String {
+  let ext = "." + component + ".swift"
+  let pathParts = splitPath(pathname: fileDescriptor.name)
+  switch outputNamingOption {
+  case .FullPath:
+    return pathParts.dir + pathParts.base + ext
+  case .PathToUnderscores:
+    let dirWithUnderscores =
+      pathParts.dir.replacingOccurrences(of: "/", with: "_")
+    return dirWithUnderscores + pathParts.base + ext
+  case .DropPath:
+    return pathParts.base + ext
+  }
+}
+
+var generatedFiles : [String:Int] = [:]
+
+func uniqueOutputFileName(component: String, fileDescriptor: FileDescriptor) -> String {
+  let defaultName = outputFileName(component:component, fileDescriptor:fileDescriptor)
+  if let count = generatedFiles[defaultName] {
+    generatedFiles[defaultName] = count + 1
+    return outputFileName(component:  "\(count)." + component, fileDescriptor: fileDescriptor )
+  } else {
+    generatedFiles[defaultName] = 1
+    return defaultName
+  }
+}
+
 func main() throws {
 
   // initialize template engine and add custom filters
@@ -51,82 +121,48 @@ func main() throws {
 
   // initialize responses
   var response = Google_Protobuf_Compiler_CodeGeneratorResponse()
-  var log = ""
 
   // read plugin input
   let rawRequest = try Stdin.readall()
   let request = try Google_Protobuf_Compiler_CodeGeneratorRequest(serializedData: rawRequest)
   
   let options = try GeneratorOptions(parameter: request.parameter)
-  
-  var generatedFileNames = Set<String>()
+
+  // Build the SwiftProtobufPluginLibrary model of the plugin input
+  let descriptorSet = DescriptorSet(protos: request.protoFile)
 
   // process each .proto file separately
-  for protoFile in request.protoFile {
+  for fileDescriptor in descriptorSet.files {
 
-    let file = FileDescriptor(proto:protoFile)
-
-    // a package declaration is required
-    let package = file.package
-    guard package != "" else {
-      print("ERROR: no package for \(file.name)")
-      continue
-    }
-
-    // log info about the service
-    log += "File \(file.name)\n"
-    for service in file.service {
-      log += "Service \(service.name)\n"
-      for method in service.method {
-        log += " Method \(method.name)\n"
-        log += "  input \(method.inputType)\n"
-        log += "  output \(method.outputType)\n"
-        log += "  client_streaming \(method.clientStreaming)\n"
-        log += "  server_streaming \(method.serverStreaming)\n"
+    if fileDescriptor.services.count > 0 {
+      // a package declaration is required for file containing service(s)
+      let package = fileDescriptor.package
+      guard package != ""  else {
+        print("ERROR: no package for \(fileDescriptor.name)")
+        continue
       }
-    }
-
-    if file.service.count > 0 {
-
+      
       // generate separate implementation files for client and server
-      let context : [String:Any] = ["file": file, "access": options.visibility.sourceSnippet]
+      let context : [String:Any] = [
+        "file": fileDescriptor,
+        "client": true,
+        "server": true,
+        "access": options.visibility.sourceSnippet]
 
       do {
-        let clientFileName = package + ".client.pb.swift"
-        if !generatedFileNames.contains(clientFileName) {
-          generatedFileNames.insert(clientFileName)
-          let clientcode = try templateEnvironment.renderTemplate(name:"client.pb.swift",
-                                                                  context: context)
-          var clientfile = Google_Protobuf_Compiler_CodeGeneratorResponse.File()
-          clientfile.name = clientFileName
-          clientfile.content = stripMarkers(clientcode)
-          response.file.append(clientfile)
-        }
 
-        let serverFileName = package + ".server.pb.swift"
-        if !generatedFileNames.contains(serverFileName) {
-          generatedFileNames.insert(serverFileName)
-          let servercode = try templateEnvironment.renderTemplate(name:"server.pb.swift",
-                                                                  context: context)
-          var serverfile = Google_Protobuf_Compiler_CodeGeneratorResponse.File()
-          serverfile.name = serverFileName
-          serverfile.content = stripMarkers(servercode)
-          response.file.append(serverfile)
-        }
+        let grpcFileName = uniqueOutputFileName(component:"grpc", fileDescriptor:fileDescriptor)
+        let grpcCode = try templateEnvironment.renderTemplate(name:"main.swift", context: context)
+        var grpcFile = Google_Protobuf_Compiler_CodeGeneratorResponse.File()
+        grpcFile.name = grpcFileName
+        grpcFile.content = stripMarkers(grpcCode)
+        response.file.append(grpcFile)
+
       } catch (let error) {
         Log("ERROR \(error)")
-        log += "ERROR: \(error)\n"
       }
     }
   }
-
-  log += "\(request)"
-
-  // add the logfile to the code generation response
-  var logfile = Google_Protobuf_Compiler_CodeGeneratorResponse.File()
-  logfile.name = "swiftgrpc.log"
-  logfile.content = log
-  response.file.append(logfile)
 
   // return everything to the caller
   let serializedResponse = try response.serializedData()

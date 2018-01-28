@@ -41,7 +41,7 @@ The recommended way to use Swift gRPC is to first define an API using the
 language and then use the
 [Protocol Buffer Compiler](https://github.com/google/protobuf)
 and the [Swift Protobuf](https://github.com/apple/swift-protobuf)
-and [gRPC-Swift](https://github.com/grpc/grpc-swift) plugins to
+and [Swift gRPC](https://github.com/grpc/grpc-swift) plugins to
 generate the necessary support code.
 
 ### Getting the dependencies
@@ -49,7 +49,7 @@ generate the necessary support code.
 Binary releases of `protoc`, the Protocol Buffer Compiler, are
 available on [GitHub](https://github.com/google/protobuf/releases).
 
-To build the plugins, run `make` in the [Plugins](Plugins) directory.
+To build the plugins, run `make` in the [Plugin](Plugin) directory.
 This uses the Swift Package Manager to build both of the necessary
 plugins: `protoc-gen-swift`, which generates Protocol Buffer support code
 and `protoc-gen-swiftgrpc`, which generates gRPC interface code.
@@ -79,13 +79,7 @@ generate an Xcode project for the SwiftGRPC package:
 
 This will create `SwiftGRPC.xcodeproj`, which you should
 add to your project, along with setting build dependencies
-on **BoringSSL**, **CgRPC**, and **gRPC**. Due to present
-limitations in Package Manager configuration, the libz
-dependency is not included in the generated Xcode project. If
-you get build errors about missing symbols such as
-`_deflate`, `_deflateEnd`, etc., you can fix them by adding
-`libz.tbd` to the **Link Binary With Libraries** build step
-of the **CgRPC** target.
+on **BoringSSL**, **CgRPC**, **gRPC**, and **CzLib**.
 
 Please also note that your project will need to include the
 **SwiftProtobuf.xcodeproj** from
@@ -110,9 +104,9 @@ For an example of this in Swift, please see the
 grpc-swift depends on Swift, Xcode, and swift-proto. We are currently
 testing with the following versions:
 
-- Xcode 9 
-- Swift 4 (swiftlang-900.0.43 clang-900.0.22.8)
-- swift-protobuf 0.9.904 
+- Xcode 9.1
+- Swift 4.0-dev
+- swift-protobuf 1.0.2
 
 ## License
 

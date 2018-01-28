@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D35358201E219963007FA223 /* echo.client.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D353581D1E219963007FA223 /* echo.client.pb.swift */; };
+		D35358201E219963007FA223 /* echo.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D353581D1E219963007FA223 /* echo.grpc.swift */; };
 		D35358211E219963007FA223 /* echo.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D353581E1E219963007FA223 /* echo.pb.swift */; };
-		D35358221E219963007FA223 /* echo.server.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D353581F1E219963007FA223 /* echo.server.pb.swift */; };
 		D35358251E219980007FA223 /* EchoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35358241E219980007FA223 /* EchoProvider.swift */; };
 		D35C9FAC1D74B079000443CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35C9FAB1D74B079000443CD /* AppDelegate.swift */; };
 		D35C9FAE1D74B079000443CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D35C9FAD1D74B079000443CD /* Assets.xcassets */; };
@@ -74,48 +73,6 @@
 			remoteGlobalIDString = "______Target_Protobuf";
 			remoteInfo = SwiftProtobuf_macOS;
 		};
-		D36AB7211F58DEDB007D7184 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D36AB7181F58DEDB007D7184 /* SwiftGRPC.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = OBJ_867;
-			remoteInfo = "zlib-example";
-		};
-		D36AB7231F58DEDB007D7184 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D36AB7181F58DEDB007D7184 /* SwiftGRPC.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = OBJ_868;
-			remoteInfo = Czlib;
-		};
-		D36AB7251F58DEDB007D7184 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D36AB7181F58DEDB007D7184 /* SwiftGRPC.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = OBJ_869;
-			remoteInfo = CgRPC;
-		};
-		D36AB7271F58DEDB007D7184 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D36AB7181F58DEDB007D7184 /* SwiftGRPC.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = OBJ_870;
-			remoteInfo = BoringSSL;
-		};
-		D36AB7291F58DEDB007D7184 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D36AB7181F58DEDB007D7184 /* SwiftGRPC.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = OBJ_871;
-			remoteInfo = gRPC;
-		};
-		D36AB72B1F58DEDB007D7184 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D36AB7181F58DEDB007D7184 /* SwiftGRPC.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = OBJ_872;
-			remoteInfo = gRPCTests;
-		};
 		D36AB7331F58DEDB007D7184 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D315DEDF1EE8B29A007670CE /* SwiftProtobuf.xcodeproj */;
@@ -123,41 +80,12 @@
 			remoteGlobalIDString = "_____Product_Protobuf_macOS";
 			remoteInfo = SwiftProtobuf_macOS;
 		};
-		D36AB7351F58DF02007D7184 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D36AB7181F58DEDB007D7184 /* SwiftGRPC.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = OBJ_882;
-			remoteInfo = Czlib;
-		};
-		D36AB7371F58DF02007D7184 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D36AB7181F58DEDB007D7184 /* SwiftGRPC.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = OBJ_904;
-			remoteInfo = CgRPC;
-		};
-		D36AB7391F58DF02007D7184 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D36AB7181F58DEDB007D7184 /* SwiftGRPC.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = OBJ_1231;
-			remoteInfo = BoringSSL;
-		};
-		D36AB73B1F58DF02007D7184 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D36AB7181F58DEDB007D7184 /* SwiftGRPC.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = OBJ_1543;
-			remoteInfo = gRPC;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		D315DEDF1EE8B29A007670CE /* SwiftProtobuf.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftProtobuf.xcodeproj; path = "../../../third_party/swift-protobuf/SwiftProtobuf.xcodeproj"; sourceTree = "<group>"; };
-		D353581D1E219963007FA223 /* echo.client.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = echo.client.pb.swift; path = ../Generated/echo.client.pb.swift; sourceTree = "<group>"; };
+		D353581D1E219963007FA223 /* echo.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = echo.grpc.swift; path = ../Generated/echo.grpc.swift; sourceTree = "<group>"; };
 		D353581E1E219963007FA223 /* echo.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = echo.pb.swift; path = ../Generated/echo.pb.swift; sourceTree = "<group>"; };
-		D353581F1E219963007FA223 /* echo.server.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = echo.server.pb.swift; path = ../Generated/echo.server.pb.swift; sourceTree = "<group>"; };
 		D35358241E219980007FA223 /* EchoProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EchoProvider.swift; path = ../EchoProvider.swift; sourceTree = "<group>"; };
 		D35C9FA81D74B079000443CD /* Echo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Echo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35C9FAB1D74B079000443CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -165,7 +93,6 @@
 		D35C9FB01D74B079000443CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		D35C9FB21D74B079000443CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D35C9FC71D74B0C1000443CD /* EchoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EchoViewController.swift; sourceTree = "<group>"; };
-		D36AB7181F58DEDB007D7184 /* SwiftGRPC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftGRPC.xcodeproj; path = ../../../SwiftGRPC.xcodeproj; sourceTree = "<group>"; };
 		D3971E201D89132E001A0B3F /* ssl.key */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ssl.key; sourceTree = "<group>"; };
 		D3BFE28B1D87A45D00A648D8 /* ssl.crt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ssl.crt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -203,9 +130,8 @@
 		D35358231E219971007FA223 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				D353581D1E219963007FA223 /* echo.client.pb.swift */,
+				D353581D1E219963007FA223 /* echo.grpc.swift */,
 				D353581E1E219963007FA223 /* echo.pb.swift */,
-				D353581F1E219963007FA223 /* echo.server.pb.swift */,
 			);
 			name = Generated;
 			sourceTree = "<group>";
@@ -213,7 +139,6 @@
 		D35C9F9F1D74B079000443CD = {
 			isa = PBXGroup;
 			children = (
-				D36AB7181F58DEDB007D7184 /* SwiftGRPC.xcodeproj */,
 				D315DEDF1EE8B29A007670CE /* SwiftProtobuf.xcodeproj */,
 				D35C9FAA1D74B079000443CD /* Echo */,
 				D35358231E219971007FA223 /* Generated */,
@@ -317,7 +242,6 @@
 			projectReferences = (
 				{
 					ProductGroup = D36AB7191F58DEDB007D7184 /* Products */;
-					ProjectRef = D36AB7181F58DEDB007D7184 /* SwiftGRPC.xcodeproj */;
 				},
 				{
 					ProductGroup = D315DEE01EE8B29A007670CE /* Products */;
@@ -374,48 +298,6 @@
 			remoteRef = D315DEF51EE8B29B007670CE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D36AB7221F58DEDB007D7184 /* zlib-example */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = "zlib-example";
-			remoteRef = D36AB7211F58DEDB007D7184 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D36AB7241F58DEDB007D7184 /* Czlib.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Czlib.framework;
-			remoteRef = D36AB7231F58DEDB007D7184 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D36AB7261F58DEDB007D7184 /* CgRPC.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CgRPC.framework;
-			remoteRef = D36AB7251F58DEDB007D7184 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D36AB7281F58DEDB007D7184 /* BoringSSL.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = BoringSSL.framework;
-			remoteRef = D36AB7271F58DEDB007D7184 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D36AB72A1F58DEDB007D7184 /* gRPC.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = gRPC.framework;
-			remoteRef = D36AB7291F58DEDB007D7184 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D36AB72C1F58DEDB007D7184 /* gRPCTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = file;
-			path = gRPCTests.xctest;
-			remoteRef = D36AB72B1F58DEDB007D7184 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		D36AB7341F58DEDB007D7184 /* SwiftProtobuf.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -446,9 +328,8 @@
 			files = (
 				D35C9FC81D74B0C1000443CD /* EchoViewController.swift in Sources */,
 				D35C9FAC1D74B079000443CD /* AppDelegate.swift in Sources */,
-				D35358221E219963007FA223 /* echo.server.pb.swift in Sources */,
 				D35358251E219980007FA223 /* EchoProvider.swift in Sources */,
-				D35358201E219963007FA223 /* echo.client.pb.swift in Sources */,
+				D35358201E219963007FA223 /* echo.grpc.swift in Sources */,
 				D35358211E219963007FA223 /* echo.pb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
