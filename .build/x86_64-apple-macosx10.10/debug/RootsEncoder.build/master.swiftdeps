@@ -1,0 +1,5 @@
+version: "Apple Swift version 4.0.3 (swiftlang-900.0.74.1 clang-900.0.39.2)"
+options: "6b4317819454a557c72657641d7e32a1"
+build_time: [1517182811, 113852000]
+inputs:
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/RootsEncoder/main.swift": [1517182585, 0]

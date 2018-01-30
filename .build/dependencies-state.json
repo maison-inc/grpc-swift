@@ -1,0 +1,1 @@
+{"object": {"dependencies": [{"basedOn": null, "name": "zlib", "repositoryURL": "https://github.com/Zewo/zlib.git", "state": {"checkoutState": {"branch": null, "revision": "4967a680a4e8cfbf167332dee7f0ec1043fd3b04", "version": "0.4.0"}, "name": "checkout"}, "subpath": "zlib.git--9016602441419864029"}]}, "version": 1}

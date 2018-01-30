@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/RootsEncoder.build/master.swiftdeps"
+  },
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/RootsEncoder/main.swift": {
+    "dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/RootsEncoder.build/main.d",
+    "object": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/RootsEncoder.build/main.swift.o",
+    "swiftmodule": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/RootsEncoder.build/main~partial.swiftmodule",
+    "swift-dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/RootsEncoder.build/main.swiftdeps"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/zlib_example.build/master.swiftdeps"
+  },
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/checkouts/zlib.git--9016602441419864029/Sources/zlib-example/main.swift": {
+    "dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/zlib_example.build/main.d",
+    "object": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/zlib_example.build/main.swift.o",
+    "swiftmodule": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/zlib_example.build/main~partial.swiftmodule",
+    "swift-dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/zlib_example.build/main.swiftdeps"
+  }
+}

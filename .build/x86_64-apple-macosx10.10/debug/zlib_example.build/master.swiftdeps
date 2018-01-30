@@ -1,0 +1,5 @@
+version: "Apple Swift version 4.0.3 (swiftlang-900.0.74.1 clang-900.0.39.2)"
+options: "a73da2416817202b6074c92fe1dd55aa"
+build_time: [1516927830, 375032000]
+inputs:
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/checkouts/zlib.git--9016602441419864029/Sources/zlib-example/main.swift": [1508935464, 0]

@@ -1,0 +1,77 @@
+{
+  "": {
+    "swift-dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/master.swiftdeps"
+  },
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/ByteBuffer.swift": {
+    "dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/ByteBuffer.d",
+    "object": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/ByteBuffer.swift.o",
+    "swiftmodule": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/ByteBuffer~partial.swiftmodule",
+    "swift-dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/ByteBuffer.swiftdeps"
+  },
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/Call.swift": {
+    "dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Call.d",
+    "object": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Call.swift.o",
+    "swiftmodule": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Call~partial.swiftmodule",
+    "swift-dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Call.swiftdeps"
+  },
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/Channel.swift": {
+    "dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Channel.d",
+    "object": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Channel.swift.o",
+    "swiftmodule": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Channel~partial.swiftmodule",
+    "swift-dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Channel.swiftdeps"
+  },
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/CompletionQueue.swift": {
+    "dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/CompletionQueue.d",
+    "object": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/CompletionQueue.swift.o",
+    "swiftmodule": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/CompletionQueue~partial.swiftmodule",
+    "swift-dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/CompletionQueue.swiftdeps"
+  },
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/Handler.swift": {
+    "dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Handler.d",
+    "object": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Handler.swift.o",
+    "swiftmodule": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Handler~partial.swiftmodule",
+    "swift-dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Handler.swiftdeps"
+  },
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/Metadata.swift": {
+    "dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Metadata.d",
+    "object": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Metadata.swift.o",
+    "swiftmodule": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Metadata~partial.swiftmodule",
+    "swift-dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Metadata.swiftdeps"
+  },
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/Mutex.swift": {
+    "dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Mutex.d",
+    "object": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Mutex.swift.o",
+    "swiftmodule": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Mutex~partial.swiftmodule",
+    "swift-dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Mutex.swiftdeps"
+  },
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/Operation.swift": {
+    "dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Operation.d",
+    "object": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Operation.swift.o",
+    "swiftmodule": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Operation~partial.swiftmodule",
+    "swift-dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Operation.swiftdeps"
+  },
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/OperationGroup.swift": {
+    "dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/OperationGroup.d",
+    "object": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/OperationGroup.swift.o",
+    "swiftmodule": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/OperationGroup~partial.swiftmodule",
+    "swift-dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/OperationGroup.swiftdeps"
+  },
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/Roots.swift": {
+    "dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Roots.d",
+    "object": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Roots.swift.o",
+    "swiftmodule": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Roots~partial.swiftmodule",
+    "swift-dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Roots.swiftdeps"
+  },
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/Server.swift": {
+    "dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Server.d",
+    "object": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Server.swift.o",
+    "swiftmodule": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Server~partial.swiftmodule",
+    "swift-dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/Server.swiftdeps"
+  },
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/gRPC.swift": {
+    "dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/gRPC.d",
+    "object": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/gRPC.swift.o",
+    "swiftmodule": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/gRPC~partial.swiftmodule",
+    "swift-dependencies": "/Users/jarinosuke/Documents/workspace/grpc-swift/.build/x86_64-apple-macosx10.10/debug/gRPC.build/gRPC.swiftdeps"
+  }
+}

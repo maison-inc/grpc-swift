@@ -1,0 +1,16 @@
+version: "Apple Swift version 4.0.3 (swiftlang-900.0.74.1 clang-900.0.39.2)"
+options: "ca10da58cdae838d604995d380c1b1f1"
+build_time: [1516927845, 583810000]
+inputs:
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/ByteBuffer.swift": [1508935449, 0]
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/Call.swift": [1508935449, 0]
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/Channel.swift": [1508935449, 0]
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/CompletionQueue.swift": [1508935449, 0]
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/CountDownLatch.swift": [1508935449, 0]
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/Handler.swift": [1508935449, 0]
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/Metadata.swift": [1508935449, 0]
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/Mutex.swift": [1508935449, 0]
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/Operation.swift": [1508935449, 0]
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/OperationGroup.swift": [1508935449, 0]
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/Server.swift": [1508935449, 0]
+  "/Users/jarinosuke/Documents/workspace/grpc-swift/Sources/gRPC/gRPC.swift": [1508935449, 0]
